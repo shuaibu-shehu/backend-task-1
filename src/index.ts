@@ -1,4 +1,4 @@
-import express from "express";
+import express, {Request, Response} from "express";
 import axios from "axios";
 import  cors from "cors";
 import dotenv from "dotenv";
@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors());
-app.get("/api/hello", async (req, res) => {
+app.get("/api/hello", async (req:Request , res:Response) => {
  const visitorName =  req.query.visitor_name;
  const apiKey =  process.env.IPSTACK_API_KEY;
  const openWeatherApiKey = process.env.OPEN_WEATHER_API_KEY;
