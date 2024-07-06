@@ -13,8 +13,8 @@ app.get("/api/hello", async (req, res) => {
  const apiKey =  process.env.IPSTACK_API_KEY;
  const openWeatherApiKey = process.env.OPEN_WEATHER_API_KEY;
 
+ const visitorIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress || req.ip;
  
- const visitorIP = req.ip == "::1" ? "103.23.29.120": req.ip; 
  const url = `http://api.ipstack.com/${visitorIP}?access_key=${apiKey}`;
 
  
