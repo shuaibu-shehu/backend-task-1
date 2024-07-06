@@ -32,7 +32,7 @@ app.get("/api/hello", async (req, res) => {
     res.json({
         client_ip:visitorIP,
         location: location.region_name,
-        greeting: `Hello, ${visitorName}, the temperature is ${temp} degress celcius in ${location.city}`,
+        greeting: `Hello, ${visitorName}, the temperature is ${temp.toFixed(2)} degress celcius in ${location.city}`,
    });
  } catch (error) {
    console.error("Error fetching location data:", error);
