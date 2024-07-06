@@ -26,11 +26,13 @@ app.get("/api/hello", async (req, res) => {
    
     const waether= await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=${openWeatherApiKey}`) 
    console.log("Weather data:", waether.data);
-   
+   let temp =waether.data.main.temp
+   temp = temp - 273.15;    
+   console.log("Temperature data:", temp);
     res.json({
         client_ip:visitorIP,
         location: location.region_name,
-        greeting: `Hello, ${visitorName}, the temperature is ${waether.data.main.temp} degress celcius in ${location.city}`,
+        greeting: `Hello, ${visitorName}, the temperature is ${temp} degress celcius in ${location.city}`,
    });
  } catch (error) {
    console.error("Error fetching location data:", error);
