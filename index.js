@@ -29,7 +29,7 @@ app.get("/api/hello", async (req, res) => {
    
     res.json({
         client_ip:visitorIP,
-        location: location.country_name,
+        location: location.region_name,
         greeting: `Hello, ${visitorName}, the temperature is ${waether.data.main.temp} degress celcius in ${location.city}`,
    });
  } catch (error) {
